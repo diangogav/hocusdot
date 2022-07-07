@@ -49,3 +49,6 @@ export DOTFILES_PATH="$HOME/.dotfiles"
 
 # Add scripts folder
 export PATH="$PATH:$DOTFILES_PATH/scripts:"
+
+# Load aliases file
+source $DOTFILES_PATH/aliases
