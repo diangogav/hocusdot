@@ -1,0 +1,9 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.bashrc: ./bashrc
+    ~/.zshrc: ./zshrc
