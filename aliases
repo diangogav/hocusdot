@@ -1,2 +1,3 @@
-alias tocode='cd ~/Code'
+alias tocode='cd ~/code'
 alias dotfiles='cd ~/.dotfiles'
+alias reload='source ~/.zshrc'

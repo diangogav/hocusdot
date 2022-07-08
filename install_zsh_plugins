@@ -1,10 +1,18 @@
 #!/usr/bin/env zsh
 
-DIR="./zsh/zsh-autocomplete/"
+DIR="./zsh-plugins/zsh-autosuggestions/"
 
 if [ -d "$DIR" ]; then
    echo "'$DIR' found ..."
 else
-    git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ./zsh/zsh-autocomplete/
+    git clone https://github.com/zsh-users/zsh-autosuggestions $DIR
+fi
+
+DIR="./zsh-plugins/zsh-syntax-highlighting/"
+
+if [ -d "$DIR" ]; then
+   echo "'$DIR' found ..."
+else
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $DIR
 fi
 

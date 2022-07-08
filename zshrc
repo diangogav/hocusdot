@@ -29,5 +29,7 @@ source $DOTFILES_PATH/aliases
 eval "$(starship init zsh)"
 
 # ZSH Plugins
-source $DOTFILES_PATH/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $DOTFILES_PATH/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $DOTFILES_PATH/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
