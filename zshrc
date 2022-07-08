@@ -2,7 +2,7 @@
 
 autoload -Uz promptinit
 promptinit
-prompt adam1
+# prompt adam1
 
 setopt histignorealldups sharehistory
 
@@ -48,7 +48,10 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 export DOTFILES_PATH="$HOME/.dotfiles"
 
 # Add scripts folder
-export PATH="$PATH:$DOTFILES_PATH/scripts:"
+export PATH="$PATH:$DOTFILES_PATH/scripts/*:"
 
 # Load aliases file
 source $DOTFILES_PATH/aliases
+
+# Load Starship
+eval "$(starship init zsh)"
