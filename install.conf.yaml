@@ -12,6 +12,10 @@
 
 - shell:
     -
+        command: ./install_zsh_plugins
+        stdout: true
+        stderr: true
+    -
         command: ./install_starship
         stdout: true
         stderr: true

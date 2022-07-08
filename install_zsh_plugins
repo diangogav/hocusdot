@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+DIR="./zsh/zsh-autocomplete/"
+
+if [ -d "$DIR" ]; then
+   echo "'$DIR' found ..."
+else
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ./zsh/zsh-autocomplete/
+fi
+

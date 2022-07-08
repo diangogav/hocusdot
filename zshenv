@@ -1,3 +1,5 @@
 function exists() {
   command -v $1 > /dev/null 2>&1
 }
+
+skip_global_compinit=1
