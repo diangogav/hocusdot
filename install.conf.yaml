@@ -7,4 +7,11 @@
 - link:
     ~/.bashrc: ./bashrc
     ~/.zshrc: ./zshrc
+    ~/.zshenv: zshenv
     ~/.config/starship.toml: ./starship.toml
+
+- shell:
+    -
+        command: ./install_starship
+        stdout: true
+        stderr: true
