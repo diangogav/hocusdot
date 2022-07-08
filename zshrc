@@ -30,3 +30,4 @@ eval "$(starship init zsh)"
 
 # ZSH Plugins
 source $DOTFILES_PATH/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

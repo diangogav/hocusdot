@@ -19,3 +19,9 @@
         command: ./install_starship
         stdout: true
         stderr: true
+
+    -
+        command: ./install_fzf
+        stdout: true
+        stderr: true
+
