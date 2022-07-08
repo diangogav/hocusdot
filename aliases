@@ -1,1 +1,2 @@
-alias hello='echo world'
+alias tocode='cd ~/Code'
+alias dotfiles='cd ~/.dotfiles'

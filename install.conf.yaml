@@ -7,3 +7,4 @@
 - link:
     ~/.bashrc: ./bashrc
     ~/.zshrc: ./zshrc
+    ~/.config/starship.toml: ./starship.toml
