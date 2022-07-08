@@ -4,9 +4,8 @@
 - Install ZSH and make as default shell with `chsh -s /usr/bin/zsh`
 
 - Install nerd fonts:
-  - `git clone https://github.com/ryanoasis/nerd-fonts`
-  - `cd nerd-fonts`
-  - `sudo ./install.sh`
+  - https://www.nerdfonts.com/font-downloads
+  - install starship `curl -sS https://starship.rs/install.sh | sh`
 
 - Delete bashrc and zshrc manually 
 
