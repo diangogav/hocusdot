@@ -32,4 +32,8 @@ eval "$(starship init zsh)"
 source $DOTFILES_PATH/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DOTFILES_PATH/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ZSH Configurations
+set -o noclobber #ensure that shell redirection will not overwrite existing files
