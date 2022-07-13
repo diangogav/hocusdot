@@ -1,0 +1,2 @@
+#/bin/bash env sh
+git branch -D $(git branch | fzf)
