@@ -16,3 +16,11 @@ else
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $DIR
 fi
 
+DIR="./zsh-plugins/zsh-interactive-cd/"
+
+if [ -d "$DIR" ]; then
+   echo "'$DIR' found ..."
+else
+    git clone https://github.com/changyuheng/zsh-interactive-cd.git $DIR
+fi
+
