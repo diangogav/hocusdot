@@ -29,6 +29,9 @@ source $DOTFILES_PATH/aliases
 # Load Starship
 eval "$(starship init zsh)"
 
+# load ZSH completions
+source $DOTFILES_PATH/completion.zsh
+
 # ZSH Plugins
 source $DOTFILES_PATH/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $DOTFILES_PATH/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
