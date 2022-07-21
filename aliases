@@ -1,3 +1,8 @@
 alias tocode='cd ~/code'
 alias dotfiles='cd ~/.dotfiles'
 alias reload='source ~/.zshrc'
+alias ll="exa -l"
+alias la="exa -la"
+alias gs='git status'
+alias ..='cd ..'
+alias ...='cd ...'

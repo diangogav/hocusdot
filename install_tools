@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+echo "\n<<< Installing Utility tools: \n exa >>>\n"
+
+if exists exa; then
+    echo "exa exists, skipping install"
+else
+    sudo apt install exa
+fi

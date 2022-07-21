@@ -20,7 +20,8 @@ HISTFILE=~/.zsh_history
 export DOTFILES_PATH="$HOME/.dotfiles"
 
 # Add scripts folder
-export PATH="$PATH:$DOTFILES_PATH/scripts/:"
+# export PATH="$PATH:$DOTFILES_PATH/scripts/:"
+export PATH=~/.dotfiles/scripts:${PATH}
 export PATH="$PATH:$HOME/.local/bin"
 
 # Load aliases file
