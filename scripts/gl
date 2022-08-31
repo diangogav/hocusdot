@@ -1,0 +1,12 @@
+#/bin/bash env bash
+commit=$(
+  git log --graph \
+    --color=always \
+    --date=human \
+    --format="%C(auto)%h%d %s %C(black)%C(bold)%ad by %an" |
+    fzf --ansi --no-sort 
+)
+
+commit_hash=$(echo ${commit})
+
+echo ${commit_hash}

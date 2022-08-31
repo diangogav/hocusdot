@@ -1,0 +1,2 @@
+#/bin/bash env sh
+git reset HEAD~1 --mixed

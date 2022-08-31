@@ -1,6 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
-sudo bash n lts
-# Now node and npm are available
-sudo npm install -g n
+if exists n; then
+    echo "node package manager n exists, skipping install"
+else
+    curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
+    sudo bash n lts
+    # Now node and npm are available
+    sudo npm install -g n
+fi

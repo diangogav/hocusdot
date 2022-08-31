@@ -7,3 +7,11 @@ if exists exa; then
 else
     sudo apt install exa
 fi
+
+echo "\n<<< Installing Utility tools: \n tldr >>>\n"
+
+if exists tldr; then
+    echo "tldr exists, skipping install"
+else
+    sudo npm i -g tldr
+fi
