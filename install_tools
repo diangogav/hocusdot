@@ -15,3 +15,11 @@ if exists tldr; then
 else
     sudo npm i -g tldr
 fi
+
+echo "\n<<< Installing Utility tools: \n git-extras >>>\n"
+
+if exists git-extras; then
+    echo "git-extras exists, skipping install"
+else
+    sudo apt-get install git-extras
+fi
