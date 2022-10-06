@@ -44,8 +44,8 @@ set -o noclobber #ensure that shell redirection will not overwrite existing file
 
 
 _reverse_search() {
-  seleted_command=$(fc -rl 1 | awk '{$1="";print substr($0,2)}' | fzf)
-  echo -n $seleted_command
+  local selected_command=$(fc -rl 1 | awk '{$1="";print substr($0,2)}' | fzf)
+  LBUFFER=$selected_command
 }
 
 zle -N _reverse_search
