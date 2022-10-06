@@ -41,3 +41,12 @@ source $DOTFILES_PATH/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlightin
 set -o noclobber #ensure that shell redirection will not overwrite existing files
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+_reverse_search() {
+  seleted_command=$(fc -rl 1 | awk '{$1="";print substr($0,2)}' | fzf)
+  echo -n $seleted_command
+}
+
+zle -N _reverse_search
+bindkey '^r' _reverse_search
