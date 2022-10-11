@@ -11,6 +11,9 @@
     ~/.zshenv: zshenv
     ~/.config/starship.toml: ./starship.toml
 
+- create:
+    - ~/code
+
 - shell:
     -
         command: ./install_node_package_manager
