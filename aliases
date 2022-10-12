@@ -1,8 +1,12 @@
 alias tocode='cd ~/code'
 alias dotfiles='cd ~/.dotfiles'
 alias reload='source ~/.zshrc'
-alias ll="exa -l"
-alias la="exa -la"
+alias ll='lsd -lh --group-dirs=first'
+alias la='lsd -a --group-dirs=first'
+alias l='lsd --group-dirs=first'
+alias lla='lsd -lha --group-dirs=first'
+alias ls='lsd --group-dirs=first'
 alias gs='git status'
 alias ..='cd ..'
 alias ...='cd ...'
+alias cat=bat
