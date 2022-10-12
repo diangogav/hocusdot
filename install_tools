@@ -1,12 +1,29 @@
 #!/usr/bin/env zsh
 
+echo "\n<<< Installing Utility tools: \n bat >>>\n"
+
+if exists bat; then
+    echo "bat exists, skipping install"
+else
+    sudo pacman -S bat --noconfirm
+fi
+
 echo "\n<<< Installing Utility tools: \n exa >>>\n"
 
 if exists exa; then
     echo "exa exists, skipping install"
 else
-    sudo pacman -S exa
+    sudo pacman -S exa --noconfirm
 fi
+
+echo "\n<<< Installing Utility tools: \n lsd >>>\n"
+
+if exists lsd; then
+    echo "lsd exists, skipping install"
+else
+    sudo pacman -S lsd --noconfirm
+fi
+
 
 echo "\n<<< Installing Utility tools: \n tldr >>>\n"
 
@@ -22,4 +39,22 @@ if exists git-extras; then
     echo "git-extras exists, skipping install"
 else
     # sudo apt-get install git-extras
+fi
+
+
+echo "\n<<< Installing Utility tools: \n git-extras >>>\n"
+
+if exists picom; then
+    echo "picom exists, skipping install"
+else
+    sudo pacman -S picom --noconfirm
+fi
+
+
+echo "\n<<< Installing Utility tools: \n mdcat >>>\n"
+
+if exists mdcat; then
+    echo "mdcat exists, skipping install"
+else
+    sudo pacman -S mdcat --noconfirm
 fi

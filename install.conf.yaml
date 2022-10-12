@@ -10,6 +10,8 @@
     ~/.zshrc: ./zshrc
     ~/.zshenv: zshenv
     ~/.config/starship.toml: ./starship.toml
+    ~/.config/kitty/kitty.conf: ./kitty.conf
+    ~/.config/Code/User.conf: ./vscode/settings.json
 
 - create:
     - ~/code
