@@ -1,8 +1,7 @@
 
- {
-   "workbench.colorTheme": "Night Owl",
-   "editor.fontFamily": "Fira Code",
+{
+  "editor.fontFamily": "Fira Code",
    "editor.fontLigatures": true,
   "editor.tabSize": 2,
-  "workbench.iconTheme": "vscode-great-icons"
+  "workbench.colorTheme": "Night Owl"
 }
