@@ -1,4 +1,14 @@
 #!/bin/sh
 
 echo "Saving VSCode extensions..."
-code --list-extensions > "$HOME"/dotfiles/code_extensions
+INSTALLED=$(cat vscode/extensions)
+MISSING=$(code --list-extensions)
+
+NOT_INSTALLED=$(comm -3 <(echo "$INSTALLED" | sort) <(echo "$MISSING" |sort))
+
+  while IFS= read -r line; do
+    echo "... $line ..."
+    echo $line >> "$DOTFILES_PATH"/vscode/extensions
+done <<< "$NOT_INSTALLED"
+
+sed -i '/^$/d' "$DOTFILES_PATH"/vscode/extensions

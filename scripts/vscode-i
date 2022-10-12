@@ -1,6 +1,6 @@
 #/bin/bash env bash
 
-INSTALLED=$(cat vscode/extensions)
+INSTALLED=$(cat $DOTFILES_PATH/vscode/extensions)
 MISSING=$(code --list-extensions)
 
 NOT_INSTALLED=$(comm -3 <(echo "$INSTALLED" | sort) <(echo "$MISSING" |sort))
