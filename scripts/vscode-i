@@ -1,0 +1,13 @@
+#/bin/bash env bash
+
+INSTALLED=$(cat vscode/extensions)
+MISSING=$(code --list-extensions)
+
+NOT_INSTALLED=$(comm -3 <(echo "$INSTALLED" | sort) <(echo "$MISSING" |sort))
+
+echo "New plugins found:"
+
+while IFS= read -r line; do
+    echo "... $line ..."
+    code --install-extension $line
+done <<< "$NOT_INSTALLED"
