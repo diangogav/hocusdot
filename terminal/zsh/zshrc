@@ -25,13 +25,13 @@ export PATH=~/.dotfiles/scripts:${PATH}
 export PATH="$PATH:$HOME/.local/bin"
 
 # Load aliases file
-source $DOTFILES_PATH/aliases
+source $DOTFILES_PATH/terminal/aliases
 
 # Load Starship
 eval "$(starship init zsh)"
 
 # load ZSH completions
-source $DOTFILES_PATH/completion.zsh
+source $DOTFILES_PATH/terminal/zsh/completion.zsh
 
 # ZSH Plugins
 source $DOTFILES_PATH/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

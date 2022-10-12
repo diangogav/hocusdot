@@ -1,0 +1,1 @@
+./install -c linux/arch/install.conf.yaml

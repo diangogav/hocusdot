@@ -1,0 +1,40 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles": ""
+    ~/.bashrc: ./terminal/bash/bashrc
+    ~/.zshrc: ./terminal/zsh/zshrc
+    ~/.zshenv: ./terminal/zsh/zshenv
+    ~/.config/starship.toml: ./terminal/starship/starship.toml
+    ~/.config/kitty/kitty.conf: ./linux/kitty.conf
+    ~/.config/Code/User/settings.json: ./vscode/settings.json
+
+- create:
+    - ~/code
+
+- shell:
+    -
+        command: ./terminal/nodejs/install_node_package_manager
+        stdout: true
+        stderr: true
+    -
+        command: ./terminal/zsh/install_zsh_plugins
+        stdout: true
+        stderr: true
+    -
+        command: ./terminal/starship/install_starship
+        stdout: true
+        stderr: true
+    -
+        command: ./terminal/zsh/install_fzf
+        stdout: true
+        stderr: true
+    -
+        command: ./linux/arch/install_tools
+        stdout: true
+        stderr: true
+
