@@ -1,8 +1,15 @@
-
- {
-   "workbench.colorTheme": "Night Owl",
-   "editor.fontFamily": "Fira Code",
-   "editor.fontLigatures": true,
+{
+  "workbench.colorCustomizations": {
+    "editor.background": "#282D3F",
+    "editorGroupHeader.tabsBackground": "#282D3F",
+    // "sideBar.background": "#282D3F",
+    "editorGroupHeader.tabs": "#282D3F",
+    "editorGutter.background": "#282D3F"
+  },
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
   "editor.tabSize": 2,
-  "workbench.iconTheme": "vscode-great-icons"
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Nocterial Palenight",
+  "editor.lineHeight": 28
 }
