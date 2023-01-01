@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 
 echo "Saving VSCode extensions..."
-DOTFILES_PLUGINS=$(cat $DOTFILES_PATH/vscode/extensions)
-HOST_PLUGINS=$(code --list-extensions)
-
-NOT_SYNC=$(comm -23 <(echo "$HOST_PLUGINS" | sort) <(echo "$DOTFILES_PLUGINS" | sort))
-
-while IFS= read -r line; do
-    echo "... $line ..."
-    echo $line >> "$DOTFILES_PATH"/vscode/extensions
-done <<< "$NOT_SYNC"
-
+code --list-extensions > "$DOTFILES_PATH"/vscode/extensions
 sed -i '/^$/d' "$DOTFILES_PATH"/vscode/extensions
