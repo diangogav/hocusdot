@@ -58,3 +58,12 @@ if exists mdcat; then
 else
     sudo pacman -S mdcat --noconfirm
 fi
+
+echo "\n<<< Installing Utility tools: \n cargo >>>\n"
+
+if exists cargo; then
+    echo "cargo exists, skipping install"
+else
+    sudo pacman -S cargo --noconfirm
+fi
+

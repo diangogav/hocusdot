@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+ctx="$1"
+cmd="$2"
+
+"${DOTFILES_PATH}/scripts/${ctx}/${cmd}" "$@"

@@ -2,6 +2,7 @@
 # https://thevaluable.dev/zsh-completion-guide-examples/
 
 fpath=($DOTFILES_PATH/zsh-plugins/zsh-completions/src $fpath)
+fpath=($DOTFILES_PATH/terminal/zsh/completions $fpath)
 zmodload zsh/complist
 autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files

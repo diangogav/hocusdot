@@ -1,15 +1,23 @@
 {
   "workbench.colorCustomizations": {
-    "editor.background": "#282D3F",
-    "editorGroupHeader.tabsBackground": "#282D3F",
+    // "editor.background": "#282D3F",
+    // "editorGroupHeader.tabsBackground": "#282D3F",
     // "sideBar.background": "#282D3F",
-    "editorGroupHeader.tabs": "#282D3F",
-    "editorGutter.background": "#282D3F"
+    // "editorGroupHeader.tabs": "#282D3F",
+    // "editorGutter.background": "#282D3F"
   },
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "Comic Mono",
+  "editor.fontSize": 16,
   "editor.fontLigatures": true,
   "editor.tabSize": 2,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Nocterial Palenight",
-  "editor.lineHeight": 28
+  "workbench.colorTheme": "Palenight Theme",
+  "editor.lineHeight": 28,
+  "launch": {
+    "configurations": [],
+    "compounds": []
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }

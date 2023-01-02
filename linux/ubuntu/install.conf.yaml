@@ -34,7 +34,7 @@
         stdout: true
         stderr: true
     -
-        command: ./linux/arch/install_tools
+        command: ./linux/ubuntu/install_tools
         stdout: true
         stderr: true
 

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+DOTFILES_PLUGINS=$(cat $DOTFILES_PATH/vscode/extensions)
+HOST_PLUGINS=$(code --list-extensions)
+
+NOT_INSTALLED=$(comm -3 <(echo "$DOTFILES_PLUGINS" | sort) <(echo "$HOST_PLUGINS" |sort))
+
+echo "New plugins found:"
+
+while IFS= read -r line; do
+    echo "... $line ..."
+    code --install-extension $line
+done <<< "$NOT_INSTALLED"
