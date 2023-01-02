@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-echo "Saving VSCode extensions..."
-code --list-extensions > "$DOTFILES_PATH"/vscode/extensions
-sed -i '/^$/d' "$DOTFILES_PATH"/vscode/extensions
