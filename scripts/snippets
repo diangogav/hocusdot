@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+directory=$(fd . $DOTFILES_PATH/snippets/ --max-depth 1  | fzf --preview='bat --color=always {}')
+
+while [[ -d $directory ]] 
+do
+  directory=$(fd . $directory --max-depth 1 | fzf --preview='bat --color=always {}')
+done
+
+cat $directory | xclip -sel clip
