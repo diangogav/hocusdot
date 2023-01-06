@@ -15,6 +15,7 @@
 
 - create:
     - ~/code
+    - ~/.config
 
 - shell:
     -
