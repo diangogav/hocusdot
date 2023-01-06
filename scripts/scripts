@@ -1,3 +1,10 @@
 #!/usr/bin/env bash
 
-$(fd . $DOTFILES_PATH/scripts/  | fzf --preview='bat --color=always {}')
+directory=$(fd . $DOTFILES_PATH/scripts/ --max-depth 1  | fzf --preview='bat --color=always {}')
+
+while [[ -d $directory ]] 
+do
+  directory=$(fd . $directory --max-depth 1 | fzf --preview='bat --color=always {}')
+done
+
+"$directory" "$@"
