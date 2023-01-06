@@ -7,6 +7,8 @@
 - create:
     - ~/code
     - ~/.config
+    - ~/.config/kitty
+    - ~/.config/Code/User
 
 - link:
     ~/.dotfiles": ""
