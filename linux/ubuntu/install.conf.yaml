@@ -4,6 +4,12 @@
 
 - clean: ['~']
 
+- create:
+    - ~/code
+    - ~/.config
+    - ~/.config/kitty
+    - ~/.config/Code/User
+
 - link:
     ~/.dotfiles": ""
     ~/.bashrc: ./terminal/bash/bashrc
@@ -12,9 +18,6 @@
     ~/.config/starship.toml: ./terminal/starship/starship.toml
     ~/.config/kitty/kitty.conf: ./linux/kitty.conf
     ~/.config/Code/User/settings.json: ./vscode/settings.json
-
-- create:
-    - ~/code
 
 - shell:
     -
