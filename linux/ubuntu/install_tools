@@ -41,6 +41,14 @@ else
     sudo apt-get install git-extras
 fi
 
+echo "\n<<< Installing Utility tools: \n wget >>>\n"
+
+if exists wget; then
+    echo "wget exists, skipping install"
+else
+    sudo apt install wget
+fi
+
 echo "\n<<< Installing Utility tools: \n fd >>>\n"
 
 if exists fd; then
