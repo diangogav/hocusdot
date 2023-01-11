@@ -1,10 +1,23 @@
 #!/usr/bin/env bash
 
-directory=$(fd . $DOTFILES_PATH/scripts/ --max-depth 1  | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
 
-while [[ -d $directory ]] 
-do
-  directory=$(fd . $directory --max-depth 1 | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
-done
 
-"$directory" "$@"
+if fdfind > /dev/null 2>&1; then
+  directory=$(fdfind . $DOTFILES_PATH/scripts/ --max-depth 1  | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
+
+  while [[ -d $directory ]] 
+  do
+    directory=$(fdfind . $directory --max-depth 1 | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
+  done
+
+  "$directory" "$@"
+else 
+  directory=$(fd . $DOTFILES_PATH/scripts/ --max-depth 1  | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
+
+  while [[ -d $directory ]] 
+  do
+    directory=$(fd . $directory --max-depth 1 | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
+  done
+
+  "$directory" "$@"
+fi
