@@ -21,7 +21,7 @@ echo "\n<<< Installing Utility tools: \n snap >>>\n"
 if exists snap; then
     echo "snap exists, skipping install"
 else
-    sudo apt-get install snapd
+    sudo apt-get install snapd -y
 fi
 
 
