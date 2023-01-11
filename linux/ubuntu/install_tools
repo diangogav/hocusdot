@@ -16,6 +16,15 @@ else
     sudo apt install exa -y
 fi
 
+echo "\n<<< Installing Utility tools: \n snap >>>\n"
+
+if exists snap; then
+    echo "snap exists, skipping install"
+else
+    sudo apt install snap
+fi
+
+
 echo "\n<<< Installing Utility tools: \n lsd >>>\n"
 
 if exists lsd; then
