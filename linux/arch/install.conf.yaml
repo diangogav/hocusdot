@@ -2,6 +2,12 @@
     link:
       relink: true
 
+- shell:
+  - [cp ~/.bashrc ./.bashrc]
+  - [cp ~/.zshrc ./.zshrc]
+  - [rm -rf ~/.bashrc]
+  - [rm -rf ~/.zshrc]
+
 - clean: ['~']
 
 - create:
