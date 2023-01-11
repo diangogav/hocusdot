@@ -2,6 +2,12 @@
     link:
       relink: true
 
+- shell:
+  - [cp ~/.bashrc ./.bashrc]
+  - [cp ~/.zshrc ./.zshrc]
+  - [rm -rf ~/.bashrc]
+  - [rm -rf ~/.zshrc]
+
 - clean: ['~']
 
 - create:
@@ -11,10 +17,7 @@
     - ~/.config/Code/User
 
 - link:
-    ~/.dotfiles": ""
-    ~/.bashrc:
-        create: true
-        path: ./terminal/bash/bashrc
+    ~/.bashrc: ./terminal/bash/bashrc
     ~/.zshrc: ./terminal/zsh/zshrc
     ~/.zshenv: ./terminal/zsh/zshenv
     ~/.config/starship.toml: ./terminal/starship/starship.toml
