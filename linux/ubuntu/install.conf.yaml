@@ -12,7 +12,9 @@
 
 - link:
     ~/.dotfiles": ""
-    ~/.bashrc: ./terminal/bash/bashrc
+    ~/.bashrc:
+        create: true
+        path: ./terminal/bash/bashrc
     ~/.zshrc: ./terminal/zsh/zshrc
     ~/.zshenv: ./terminal/zsh/zshenv
     ~/.config/starship.toml: ./terminal/starship/starship.toml
