@@ -1,21 +1,10 @@
 #!/usr/bin/env bash
 
-if fdfind > /dev/null 2>&1; then
-  directory=$(fdfind . $DOTFILES_PATH/snippets/ --max-depth 1  | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
+  directory=$(find $DOTFILES_PATH/snippets/ -mindepth 1 -maxdepth 1  | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
 
   while [[ -d $directory ]] 
   do
-    directory=$(fdfind . $directory --max-depth 1 | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
+    directory=$(find $directory -mindepth 1 -maxdepth 1 | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
   done
 
   cat $directory | xclip -sel clip
-else
-  directory=$(fd . $DOTFILES_PATH/snippets/ --max-depth 1  | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
-
-  while [[ -d $directory ]] 
-  do
-    directory=$(fd . $directory --max-depth 1 | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && exa --tree --classify {})')
-  done
-
-  cat $directory | xclip -sel clip
-fi

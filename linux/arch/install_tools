@@ -67,13 +67,3 @@ else
     sudo pacman -S cargo --noconfirm
 fi
 
-echo "\n<<< Installing Utility tools: \n fd >>>\n"
-
-if exists fd; then
-    echo "fd exists, skipping install"
-else
-    sudo pacman -S fd --noconfirm
-fi
-
-
-
