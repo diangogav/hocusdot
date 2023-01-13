@@ -17,3 +17,11 @@ else
     sudo pacman -S lsd --noconfirm
     echo "✨ lsd already installed..."
 fi
+
+if exists xclip; then
+    echo "✨ xclip already installed..."
+else
+    echo "🔧 xclip already installed..."
+    sudo pacman -S xclip --noconfirm
+    echo "✨ xclip already installed..."
+fi
