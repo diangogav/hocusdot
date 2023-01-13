@@ -1,0 +1,14 @@
+scrape_configs:
+  - job_name: "nodes" #  Define a job with name of nodes  
+    scrape_interval: 30s # Metrics should be scraped every 30s
+    scrape_timeout: 3s # Timeout of a scrape is 3s
+    scheme: https # Use HTTPS instead of default HTTP
+    metrics_path:   /stats/metrics # Scrape path should be changed from default /metrics to /stats/metrics
+    static_configs: # Scrape two targets
+      - targets: ["10.231.1.2:9090", "192.168.1.2:9090"]
+
+scrape_configs:
+    scheme: https # Use HTTPS instead of default HTTP
+    tls_config:
+      ca_file: /etc/prometheus/node_exporter.crt
+      insecure_skip_verify: true
