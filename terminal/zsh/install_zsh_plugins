@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-DIR="./zsh-pldugins/zsh-autosuggestions/"
+DIR="./zsh-plugins/zsh-autosuggestions/"
 
 if [ -d "$DIR" ]; then
    echo "✨ zsh-autosuggestions plugin already installed"
