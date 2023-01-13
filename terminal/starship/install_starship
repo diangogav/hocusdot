@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh
 
-echo "\n<<< Installing Starship >>>\n"
-
 if exists starship; then
-    echo "starship exists, skipping install"
+    echo "✨ starship already installed..."
 else
+    echo "🔧 Installing starship "
     curl -sS https://starship.rs/install.sh | sh
+    eval "$(starship init zsh)"
+    echo "✨ starship already installed..."
 fi

@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-echo "\n<<< Installing fzf >>>\n"
-
 if exists fzf; then
-    echo "fzf exists, skipping install"
+    echo "✨ fzf already installed..."
 else
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  echo "🔧 Installing fzf..."
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf --quiet
   ~/.fzf/install
+  echo "✨ fzf already installed..."
 fi

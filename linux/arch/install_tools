@@ -1,69 +1,19 @@
 #!/usr/bin/env zsh
 
-echo "\n<<< Installing Utility tools: \n bat >>>\n"
+echo "🔧 Installing Utility tools!"
 
 if exists bat; then
-    echo "bat exists, skipping install"
+    echo "✨ bat already installed..."
 else
+    echo "🔧 Installing bat "
     sudo pacman -S bat --noconfirm
+    echo "✨ bat already installed..."
 fi
-
-echo "\n<<< Installing Utility tools: \n exa >>>\n"
-
-if exists exa; then
-    echo "exa exists, skipping install"
-else
-    sudo pacman -S exa --noconfirm
-fi
-
-echo "\n<<< Installing Utility tools: \n lsd >>>\n"
 
 if exists lsd; then
-    echo "lsd exists, skipping install"
+    echo "✨ lsd already installed..."
 else
+    echo "🔧 lsd already installed..."
     sudo pacman -S lsd --noconfirm
+    echo "✨ lsd already installed..."
 fi
-
-
-echo "\n<<< Installing Utility tools: \n tldr >>>\n"
-
-if exists tldr; then
-    echo "tldr exists, skipping install"
-else
-    sudo npm i -g tldr
-fi
-
-echo "\n<<< Installing Utility tools: \n git-extras >>>\n"
-
-if exists git-extras; then
-    echo "git-extras exists, skipping install"
-else
-    # sudo apt-get install git-extras
-fi
-
-
-echo "\n<<< Installing Utility tools: \n git-extras >>>\n"
-
-if exists picom; then
-    echo "picom exists, skipping install"
-else
-    sudo pacman -S picom --noconfirm
-fi
-
-
-echo "\n<<< Installing Utility tools: \n mdcat >>>\n"
-
-if exists mdcat; then
-    echo "mdcat exists, skipping install"
-else
-    sudo pacman -S mdcat --noconfirm
-fi
-
-echo "\n<<< Installing Utility tools: \n cargo >>>\n"
-
-if exists cargo; then
-    echo "cargo exists, skipping install"
-else
-    sudo pacman -S cargo --noconfirm
-fi
-

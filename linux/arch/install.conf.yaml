@@ -3,10 +3,10 @@
       relink: true
 
 - shell:
-  - [cp ~/.bashrc ./.bashrc]
-  - [cp ~/.zshrc ./.zshrc]
-  - [rm -rf ~/.bashrc]
-  - [rm -rf ~/.zshrc]
+  - [cp ~/.bashrc ./.bashrc 2> /dev/null]
+  - [cp ~/.zshrc ./.zshrc 2> /dev/null]
+  - [rm -rf ~/.bashrc 2> /dev/null]
+  - [rm -rf ~/.zshrc 2> /dev/null]
 
 - clean: ['~']
 
@@ -44,6 +44,11 @@
         stderr: true
     -
         command: ./linux/arch/install_tools
+        stdout: true
+        stderr: true
+
+    -
+        command: ./linux/arch/install_extra_tools
         stdout: true
         stderr: true
 

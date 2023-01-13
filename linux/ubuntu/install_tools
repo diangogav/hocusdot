@@ -8,14 +8,6 @@ else
     sudo apt install bat -y
 fi
 
-echo "\n<<< Installing Utility tools: \n exa >>>\n"
-
-if exists exa; then
-    echo "exa exists, skipping install"
-else
-    sudo apt install exa -y
-fi
-
 echo "\n<<< Installing Utility tools: \n snap >>>\n"
 
 if exists snap; then

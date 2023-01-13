@@ -1,18 +1,22 @@
 #!/usr/bin/env zsh
 
-DIR="./zsh-plugins/zsh-autosuggestions/"
+DIR="./zsh-pldugins/zsh-autosuggestions/"
 
 if [ -d "$DIR" ]; then
-   echo "'$DIR' found ..."
+   echo "✨ zsh-autosuggestions plugin already installed"
 else
-    git clone https://github.com/zsh-users/zsh-autosuggestions $DIR
+    echo "🔧 Installing zsh-autosuggestions plugin..."
+    git clone https://github.com/zsh-users/zsh-autosuggestions $DIR --quiet
+    echo "✨ zsh-autosuggestions plugin already installed"
 fi
 
 DIR="./zsh-plugins/zsh-syntax-highlighting/"
 
 if [ -d "$DIR" ]; then
-   echo "'$DIR' found ..."
+   echo "✨ zsh-syntax-highlighting plugin already installed"
 else
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $DIR
+    echo "🔧 Installing zsh-syntax-highlighting plugin..."
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $DIR --quiet
+   echo "✨ zsh-syntax-highlighting plugin already installed"
 fi
 

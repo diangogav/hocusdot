@@ -1,10 +1,12 @@
 #!/usr/bin/env zsh
 
 if exists n; then
-    echo "node package manager n exists, skipping install"
+    echo "✨ node package manager n already installed..."
 else
-    curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
-    sudo bash n lts
+    echo "🔧 Installing node package manager n "
+    curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n --silent
+    sudo bash n lts 2>&1 /dev/null
     # Now node and npm are available
-    sudo npm install -g n
+    sudo npm install -g n --silent
+    echo "✨ node package manager n already installed..."
 fi

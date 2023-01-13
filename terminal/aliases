@@ -10,3 +10,4 @@ alias gs='git status'
 alias ..='cd ..'
 alias ...='cd ...'
 alias cat=bat
+alias dnm='find . -name node_modules -prune -exec rm -rf {} \;'
