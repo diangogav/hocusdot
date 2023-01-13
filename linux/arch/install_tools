@@ -13,7 +13,7 @@ fi
 if exists lsd; then
     echo "✨ lsd already installed..."
 else
-    echo "🔧 lsd already installed..."
+    echo "🔧 Installing lsd"
     sudo pacman -S lsd --noconfirm
     echo "✨ lsd already installed..."
 fi
@@ -21,7 +21,7 @@ fi
 if exists xclip; then
     echo "✨ xclip already installed..."
 else
-    echo "🔧 xclip already installed..."
+    echo "🔧 Installing xclip"
     sudo pacman -S xclip --noconfirm
     echo "✨ xclip already installed..."
 fi

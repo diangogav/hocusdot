@@ -1,51 +1,33 @@
 #!/usr/bin/env zsh
 
-echo "\n<<< Installing Utility tools: \n bat >>>\n"
+echo "🔧 Installing Utility tools!"
 
 if exists bat; then
-    echo "bat exists, skipping install"
+    echo "✨ bat already installed..."
 else
-    sudo apt install bat -y
+    echo "🔧 Installing bat "
+    sudo apt install -qq bat -y
+    echo "✨ bat already installed..."
 fi
-
-echo "\n<<< Installing Utility tools: \n snap >>>\n"
 
 if exists snap; then
-    echo "snap exists, skipping install"
+    echo "✨ snap already installed..."
 else
-    sudo apt-get install snapd -y
+    sudo apt-get install -qq snapd -y
 fi
-
-
-echo "\n<<< Installing Utility tools: \n lsd >>>\n"
 
 if exists lsd; then
-    echo "lsd exists, skipping install"
+    echo "✨ lsd already installed..."
 else
+    echo "🔧 Installing lsd"
     sudo snap install lsd
+    echo "✨ lsd already installed..."
 fi
 
-
-echo "\n<<< Installing Utility tools: \n tldr >>>\n"
-
-if exists tldr; then
-    echo "tldr exists, skipping install"
+if exists xclip; then
+    echo "✨ xclip already installed..."
 else
-    sudo npm i -g tldr
-fi
-
-echo "\n<<< Installing Utility tools: \n git-extras >>>\n"
-
-if exists git-extras; then
-    echo "git-extras exists, skipping install"
-else
-    sudo apt-get install git-extras
-fi
-
-echo "\n<<< Installing Utility tools: \n wget >>>\n"
-
-if exists wget; then
-    echo "wget exists, skipping install"
-else
-    sudo apt install wget
+    echo "🔧 Installing xclip"
+    sudo apt install -qq xclip -y
+    echo "✨ xclip already installed..."
 fi

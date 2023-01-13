@@ -46,7 +46,6 @@
         command: ./linux/arch/install_tools
         stdout: true
         stderr: true
-
     -
         command: ./linux/arch/install_extra_tools
         stdout: true

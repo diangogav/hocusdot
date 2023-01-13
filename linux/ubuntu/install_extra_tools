@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+echo "🔧 Installing Extra tools!"
+
+if exists tldr; then
+    echo "✨ tldr already installed..."
+else
+    echo "🔧 Installing tldr "
+    sudo npm i -g tldr
+    echo "✨ tldr already installed..."
+fi
