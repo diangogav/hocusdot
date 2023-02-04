@@ -23,7 +23,7 @@ export PATH=~/.dotfiles/scripts:${PATH}
 export PATH="$PATH:$HOME/.local/bin"
 
 # Environment Variables
-source $DOTFILES_PATH/terminal/private-exports.sh
+# source $DOTFILES_PATH/terminal/private-exports.sh
 
 # Load aliases file
 source $DOTFILES_PATH/terminal/aliases
