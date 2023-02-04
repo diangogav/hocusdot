@@ -10,8 +10,8 @@
   "editor.fontSize": 16,
   "editor.fontLigatures": true,
   "editor.tabSize": 2,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Palenight Theme",
+  "workbench.iconTheme": "sweet-vscode-icons",
+  "workbench.colorTheme": "Sweet Dracula",
   "editor.lineHeight": 28,
   "launch": {
     "configurations": [],

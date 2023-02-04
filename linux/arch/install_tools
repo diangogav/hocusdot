@@ -25,3 +25,11 @@ else
     sudo pacman -S xclip --noconfirm
     echo "✨ xclip already installed..."
 fi
+
+if exists hyperfine; then
+    echo "✨ hyperfine already installed..."
+else
+    echo "🔧 Installing hyperfine"
+    sudo pacman -S hyperfine --noconfirm
+    echo "✨ hyperfine already installed..."
+fi

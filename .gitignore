@@ -1,2 +1,4 @@
 ./scripts/secrets/*
 zsh-plugins
+scripts/private
+/**/**/private-*

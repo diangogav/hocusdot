@@ -14,8 +14,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# Environment Variables
-
 # Dotfiles directory
 export DOTFILES_PATH="$HOME/.dotfiles"
 
@@ -23,6 +21,9 @@ export DOTFILES_PATH="$HOME/.dotfiles"
 # export PATH="$PATH:$DOTFILES_PATH/scripts/:"
 export PATH=~/.dotfiles/scripts:${PATH}
 export PATH="$PATH:$HOME/.local/bin"
+
+# Environment Variables
+source $DOTFILES_PATH/terminal/private-exports.sh
 
 # Load aliases file
 source $DOTFILES_PATH/terminal/aliases
