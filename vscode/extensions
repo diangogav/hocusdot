@@ -2,11 +2,17 @@ dbaeumer.vscode-eslint
 eamodio.gitlens
 EliverLara.sweet-vscode-icons
 esbenp.prettier-vscode
+inci-august.august-themes
 mongodb.mongodb-vscode
 ms-azuretools.vscode-docker
 ms-vscode-remote.remote-containers
+ms-vscode.cmake-tools
+ms-vscode.cpptools
+ms-vscode.cpptools-extension-pack
+ms-vscode.cpptools-themes
 PKief.material-icon-theme
 pmneo.tsimporter
 PROxZIMA.sweetdracula
 rust-lang.rust-analyzer
+twxs.cmake
 wayou.vscode-todo-highlight

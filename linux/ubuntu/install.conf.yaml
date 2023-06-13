@@ -14,6 +14,7 @@
     - ~/code
     - ~/.config
     - ~/.config/kitty
+    - ~/.config/alacritty
     - ~/.config/Code/User
 
 - link:
@@ -22,7 +23,9 @@
     ~/.zshenv: ./terminal/zsh/zshenv
     ~/.config/starship.toml: ./terminal/starship/starship.toml
     ~/.config/kitty/kitty.conf: ./linux/kitty.conf
+    ~/.config/alacritty/alacritty.yml: ./linux/alacritty.yml
     ~/.config/Code/User/settings.json: ./vscode/settings.json
+    ~/.config/Code/User/keybindings.json: ./vscode/keybindings.json
 
 - shell:
     -

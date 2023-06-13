@@ -2,3 +2,5 @@
 zsh-plugins
 scripts/private
 /**/**/private-*
+.bashrc
+.zshrc

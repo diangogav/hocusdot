@@ -6,13 +6,28 @@
     // "editorGroupHeader.tabs": "#282D3F",
     // "editorGutter.background": "#282D3F"
   },
-  "editor.fontFamily": "Comic Mono",
+  "editor.minimap.enabled": false,
+  "workbench.editor.showTabs": true,
   "editor.fontSize": 16,
-  "editor.fontLigatures": true,
+  "editor.formatOnPase": false,
+  "editor.suggestSelection": "first",
+  "editor.rulers": [
+    100
+  ],
   "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  "editor.fontFamily": "VictorMono",
+  "editor.fontLigatures": true,
+
+  "search.useGlobalIgnoreFiles": true,
+  "search.useIgnoreFiles": true,
+
   "workbench.iconTheme": "sweet-vscode-icons",
-  "workbench.colorTheme": "Sweet Dracula",
-  "editor.lineHeight": 28,
+  "workbench.colorTheme": "August - Material Palenight",
+
+  "focus.opacity": "0.7",
+  "focus.highlightRange": "block",
+  "editor.lineHeight": 40,
   "launch": {
     "configurations": [],
     "compounds": []
@@ -22,5 +37,17 @@
   },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
-  }
+  },
+  "workbench.statusBar.visible": false,
+
+  "editor.cursorSmoothCareAnimation": "on",
+  "editor.smoothScrolling": true,
+  "workbench.list.smoothScrolling": true,
+  "explorer.compactFolders": false,
+  "editor.renderWhitespace": "all",
+  "workbench.tree.indent": 20,
+  "window.titleBarStyle": "custom",
+  "editor.cursorBlinking": "expand",
+"editor.cursorSmoothCaretAnimation": "on",
+"workbench.activityBar.visible": false
 }
