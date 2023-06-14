@@ -43,7 +43,16 @@
     "key": "cmd+n",
     "command": "explorer.newFile",
     "when": "explorerViewletFocus"
-  }
+  },
+    {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
   // {
   //   "key": "ctrl+alt+cmd+p",
   //   "command": "explorer.newFolder",

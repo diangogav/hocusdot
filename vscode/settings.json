@@ -18,13 +18,10 @@
   "editor.wordWrap": "off",
   "editor.fontFamily": "VictorMono",
   "editor.fontLigatures": true,
-
   "search.useGlobalIgnoreFiles": true,
   "search.useIgnoreFiles": true,
-
   "workbench.iconTheme": "sweet-vscode-icons",
   "workbench.colorTheme": "August - Material Palenight",
-
   "focus.opacity": "0.7",
   "focus.highlightRange": "block",
   "editor.lineHeight": 40,
@@ -32,14 +29,10 @@
     "configurations": [],
     "compounds": []
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "workbench.statusBar.visible": false,
-
   "editor.cursorSmoothCareAnimation": "on",
   "editor.smoothScrolling": true,
   "workbench.list.smoothScrolling": true,
@@ -48,6 +41,16 @@
   "workbench.tree.indent": 20,
   "window.titleBarStyle": "custom",
   "editor.cursorBlinking": "expand",
-"editor.cursorSmoothCaretAnimation": "on",
-"workbench.activityBar.visible": false
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.dragAndDrop": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": [
+      "source.fixAll.eslint"
+    ]
+  },
+  "workbench.activityBar.visible": false
 }
