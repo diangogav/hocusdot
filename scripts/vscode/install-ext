@@ -8,6 +8,8 @@ NOT_INSTALLED=$(comm -3 <(echo "$DOTFILES_PLUGINS" | sort) <(echo "$HOST_PLUGINS
 echo "New plugins found:"
 
 while IFS= read -r line; do
-    echo "... $line ..."
-    code --install-extension $line
+    if [[ -n "$line" ]]; then  # Verifica si la variable no está vacía
+        echo "... $line ..."
+        code --install-extension "$line"
+    fi
 done <<< "$NOT_INSTALLED"
