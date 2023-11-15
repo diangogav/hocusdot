@@ -7,7 +7,7 @@
     // "editorGutter.background": "#282D3F"
   },
   "editor.minimap.enabled": false,
-  "workbench.editor.showTabs": true,
+  "workbench.editor.showTabs": "multiple",
   "editor.fontSize": 16,
   "editor.formatOnPase": false,
   "editor.suggestSelection": "first",
@@ -16,8 +16,8 @@
   ],
   "editor.tabSize": 2,
   "editor.wordWrap": "off",
-  "editor.fontFamily": "VictorMono",
-  "editor.fontLigatures": true,
+  "editor.fontFamily": "Monaspace Radon, Bold Italic",
+  "editor.fontLigatures": "'calt', 'liga', 'dlig', 'ss01', 'ss02'",
   "search.useGlobalIgnoreFiles": true,
   "search.useIgnoreFiles": true,
   "workbench.iconTheme": "sweet-vscode-icons",
@@ -50,7 +50,12 @@
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": [
       "source.fixAll.eslint"
-    ]
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.activityBar.visible": false
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "editor.formatOnSave": true,
+  "prettier.singleQuote": true
 }
