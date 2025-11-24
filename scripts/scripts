@@ -1,10 +1,34 @@
 #!/usr/bin/env bash
 
-  directory=$(find $DOTFILES_PATH/scripts/ -mindepth 1 -maxdepth 1  | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && lsd --tree --classify {})')
+# Check dependencies
+for cmd in fzf bat lsd; do
+  if ! command -v $cmd &> /dev/null; then
+    echo "❌ Error: $cmd is required but not installed."
+    exit 1
+  fi
+done
 
-  while [[ -d $directory ]] 
-  do
-    directory=$(find $directory -mindepth 1 -maxdepth 1 | fzf --preview='bat --color=always {} 2> /dev/null || (echo This is a folder, you can navigate inside it \\n && lsd --tree --classify {})')
-  done
+# Function to browse directories
+browse() {
+  local dir="$1"
+  find "$dir" -mindepth 1 -maxdepth 1 | fzf \
+    --prompt="📂 Select script > " \
+    --preview='if [ -d {} ]; then lsd --tree --classify {}; else bat --color=always --style=numbers {}; fi' \
+    --preview-window=right:60% \
+    --height=80% \
+    --layout=reverse
+}
 
-  "$directory" "$@"
+# Main loop
+current_path="$DOTFILES_PATH/scripts"
+selected=$(browse "$current_path")
+
+while [[ -d "$selected" ]]; do
+  current_path="$selected"
+  selected=$(browse "$current_path")
+done
+
+if [[ -n "$selected" && -f "$selected" ]]; then
+  echo "🚀 Running: $(basename "$selected")"
+  "$selected" "$@"
+fi

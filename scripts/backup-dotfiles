@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# ============================================================================
+# Backup Dotfiles Script
+# ============================================================================
+
+# Colors
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+echo -e "${GREEN}💾 Backing up Dotfiles...${NC}\n"
+
+cd "$DOTFILES_PATH" || { echo "${RED}❌ DOTFILES_PATH not set or not found${NC}"; exit 1; }
+
+# Check for changes
+if [[ -z $(git status -s) ]]; then
+    echo -e "${YELLOW}✨ No changes to backup.${NC}"
+    exit 0
+fi
+
+# Show status
+git status -s
+echo ""
+
+# Add all changes
+git add .
+
+# Commit
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+MESSAGE="chore: backup dotfiles ($TIMESTAMP)"
+
+if [[ -n "$1" ]]; then
+    MESSAGE="$1"
+fi
+
+echo -e "${YELLOW}📦 Committing: $MESSAGE${NC}"
+git commit -m "$MESSAGE"
+
+# Push
+echo -e "${YELLOW}🚀 Pushing to remote...${NC}"
+if git push; then
+    echo -e "\n${GREEN}✅ Backup complete!${NC}"
+else
+    echo -e "\n${RED}❌ Push failed${NC}"
+    exit 1
+fi

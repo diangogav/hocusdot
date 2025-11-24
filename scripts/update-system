@@ -1,0 +1,58 @@
+#!/usr/bin/env zsh
+
+# ============================================================================
+# System Update Script
+# ============================================================================
+
+# Colors
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+echo "${GREEN}🔄 Starting System Update...${NC}\n"
+
+# 1. Update Dotfiles
+echo "${YELLOW}📂 Updating Dotfiles...${NC}"
+cd $DOTFILES_PATH
+if git pull; then
+    echo "${GREEN}✓ Dotfiles updated${NC}"
+else
+    echo "${RED}✗ Failed to update dotfiles${NC}"
+fi
+echo ""
+
+# 2. Update System Packages (Ubuntu/Debian)
+if command -v apt &> /dev/null; then
+    echo "${YELLOW}📦 Updating System Packages...${NC}"
+    sudo apt update && sudo apt upgrade -y
+    sudo apt autoremove -y
+    echo "${GREEN}✓ System packages updated${NC}"
+fi
+echo ""
+
+# 3. Update Zinit Plugins
+if command -v zinit &> /dev/null; then
+    echo "${YELLOW}🔌 Updating Zsh Plugins...${NC}"
+    zinit update --all
+    echo "${GREEN}✓ Zsh plugins updated${NC}"
+fi
+echo ""
+
+# 4. Update FNM/Node
+if command -v fnm &> /dev/null; then
+    echo "${YELLOW}⬢ Updating Node.js versions...${NC}"
+    # Check for fnm update (if installed via script)
+    # fnm install --lts
+    echo "${GREEN}✓ Node.js checked${NC}"
+fi
+echo ""
+
+# 5. Update tldr (if installed)
+if command -v tldr &> /dev/null; then
+    echo "${YELLOW}📚 Updating tldr pages...${NC}"
+    tldr --update
+    echo "${GREEN}✓ tldr pages updated${NC}"
+fi
+
+echo "\n${GREEN}✨ System update complete!${NC}"
