@@ -1,150 +1,155 @@
 # ============================================================================
-# 🎨 PIXEL ART / 8-BIT RETRO STARSHIP THEME 🎨
+# 🎮 RETRO GAMING / CYBERPUNK STARSHIP THEME 🎮
 # ============================================================================
-# Inspired by: Super Mario, Zelda, Minecraft, Terraria, Stardew Valley
-# Style: ASCII blocks, 8-bit colors, retro gaming aesthetics
+# Inspired by: Cyberpunk 2077, Tron, Synthwave, Retro Gaming
+# Color scheme: Neon Pink, Cyan, Purple, Green on dark background
 # ============================================================================
 
 # Timeout for commands (in milliseconds)
 command_timeout = 1000
 
-# Add blank line between prompts
+# Add blank line between prompts for better readability
 add_newline = true
 
 # ============================================================================
-# PROMPT FORMAT - Pixel Art Style
+# PROMPT FORMAT - The main layout
 # ============================================================================
 format = """
-[▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄](bold blue)\
-[█](bold blue)$username$hostname$directory$git_branch$git_status[█](bold blue)
-[█](bold blue)$nodejs$python$rust$golang$docker_context$kubernetes[█](bold blue)
-[▀▀▀](bold blue)$character"""
+[┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓](bold cyan)\
+[┃](bold cyan) $username$hostname$directory$git_branch$git_status\
+[┃](bold cyan)
+[┃](bold cyan) $nodejs$python$rust$golang$docker_context$kubernetes\
+[┃](bold cyan)
+[┗━](bold cyan)$character"""
 
-# Alternative compact format (uncomment to use)
+# Alternative minimal format (uncomment to use)
 # format = \"\"\"
-# [▓▒░](bold green)$directory$git_branch$git_status
-# [▓▒░](bold green)$character\"\"\"
+# [▓▒░](bold magenta)$directory$git_branch$git_status
+# [▓▒░](bold magenta)$character\"\"\"
 
 # ============================================================================
-# PROMPT CHARACTER - 8-bit style
+# PROMPT CHARACTER - The input indicator
 # ============================================================================
 [character]
-success_symbol = "[▶](bold green)"
-error_symbol = "[✖](bold red)"
-vimcmd_symbol = "[◀](bold yellow)"
+success_symbol = "[❯❯❯](bold cyan)"
+error_symbol = "[❯❯❯](bold red)"
+vimcmd_symbol = "[❮❮❮](bold green)"
 
 # ============================================================================
-# USERNAME - Player name
+# USERNAME - Show current user
 # ============================================================================
 [username]
-style_user = "bold yellow"
+style_user = "bold cyan"
 style_root = "bold red"
-format = "[$user](bold yellow)[◆](bold white)"
+format = "[$user](bold magenta)[@](bold cyan)"
 disabled = false
 show_always = true
 
 # ============================================================================
-# HOSTNAME - Server/World
+# HOSTNAME - Show machine name
 # ============================================================================
 [hostname]
 ssh_only = false
-format = "[$hostname](bold cyan)[◆](bold white)"
+format = "[$hostname](bold cyan) "
 disabled = false
 
 # ============================================================================
-# DIRECTORY - Current location
+# DIRECTORY - Current path
 # ============================================================================
 [directory]
-truncation_length = 3
+truncation_length = 4
 truncation_symbol = "…/"
 home_symbol = "🏠"
-read_only = "🔒"
-style = "bold magenta"
-format = "[$path]($style)[$read_only]($read_only_style) "
+read_only = " 🔒"
+style = "bold yellow"
+format = "in [$path]($style)[$read_only]($read_only_style) "
 
 [directory.substitutions]
 "Documents" = "📄"
 "Downloads" = "📥"
 "Music" = "🎵"
 "Pictures" = "🖼️"
-"code" = "💾"
-"projects" = "🎮"
-".dotfiles" = "⚙️"
+"code" = "💻"
+"projects" = "🚀"
 
 # ============================================================================
-# GIT - Version control with pixel style
+# GIT - Version control
 # ============================================================================
 [git_branch]
-symbol = "⎇ "
-format = "[on](bold white) [$symbol$branch]($style) "
-style = "bold green"
+symbol = "🎮 "
+format = "on [$symbol$branch(:$remote_branch)]($style) "
+style = "bold magenta"
 truncation_length = 20
 truncation_symbol = "…"
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "bold yellow"
-conflicted = "⚔ "
-ahead = "⬆${count} "
-behind = "⬇${count} "
-diverged = "⬍⬆${ahead_count}⬇${behind_count} "
+style = "bold red"
+conflicted = "⚔️ "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
 up_to_date = "✓ "
-untracked = "?${count} "
+untracked = "🆕${count} "
 stashed = "📦${count} "
-modified = "~${count} "
-staged = "+${count} "
-renamed = "»${count} "
-deleted = "✖${count} "
+modified = "📝${count} "
+staged = "✨${count} "
+renamed = "📛${count} "
+deleted = "🗑️${count} "
 
 [git_commit]
 commit_hash_length = 7
 format = "[\\($hash$tag\\)]($style) "
-style = "bold cyan"
-tag_symbol = "🏷 "
+style = "bold green"
+tag_symbol = "🏷️ "
 tag_disabled = false
 
 # ============================================================================
-# PROGRAMMING LANGUAGES - 8-bit icons
+# PROGRAMMING LANGUAGES
 # ============================================================================
 
 [nodejs]
 symbol = "⬢ "
-format = "via [$symbol$version]($style) "
+format = "via [$symbol($version )]($style)"
 style = "bold green"
 detect_extensions = ["js", "mjs", "cjs", "ts", "mts", "cts"]
 detect_files = ["package.json", ".node-version", ".nvmrc"]
+detect_folders = ["node_modules"]
 
 [python]
 symbol = "🐍 "
-format = 'via [$symbol$version]($style) '
+format = 'via [$symbol$pyenv_prefix($version )(\($virtualenv\) )]($style)'
 style = "bold yellow"
 pyenv_version_name = false
 detect_extensions = ["py"]
+detect_files = [".python-version", "Pipfile", "pyproject.toml", "requirements.txt"]
 
 [rust]
-symbol = "⚙ "
-format = "via [$symbol$version]($style) "
+symbol = "🦀 "
+format = "via [$symbol($version )]($style)"
 style = "bold red"
 detect_extensions = ["rs"]
+detect_files = ["Cargo.toml"]
 
 [golang]
-symbol = "🔷 "
-format = "via [$symbol$version]($style) "
+symbol = "🐹 "
+format = "via [$symbol($version )]($style)"
 style = "bold cyan"
 detect_extensions = ["go"]
+detect_files = ["go.mod", "go.sum"]
 
 [java]
 symbol = "☕ "
-format = "via [$symbol$version]($style) "
+format = "via [$symbol($version )]($style)"
 style = "bold red"
 
 [php]
 symbol = "🐘 "
-format = "via [$symbol$version]($style) "
+format = "via [$symbol($version )]($style)"
 style = "bold purple"
 
 # ============================================================================
-# TOOLS & PLATFORMS - Pixel style
+# TOOLS & PLATFORMS
 # ============================================================================
 
 [docker_context]
@@ -154,14 +159,14 @@ style = "bold blue"
 only_with_files = true
 
 [kubernetes]
-symbol = "☸ "
-format = 'on [$symbol$context]($style) '
+symbol = "⎈ "
+format = 'on [$symbol$context( \($namespace\))]($style) '
 style = "bold cyan"
 disabled = false
 
 [aws]
-symbol = "☁ "
-format = 'on [$symbol$profile]($style) '
+symbol = "☁️ "
+format = 'on [$symbol($profile )(\($region\) )]($style)'
 style = "bold yellow"
 
 [terraform]
@@ -175,112 +180,93 @@ style = "bold purple"
 
 [package]
 symbol = "📦 "
-format = "[$symbol$version]($style) "
+format = "is [$symbol$version]($style) "
 style = "bold cyan"
 display_private = false
 
 # ============================================================================
-# BATTERY - Health bar style
+# BATTERY (for laptops)
 # ============================================================================
 
 [battery]
-full_symbol = "█████"
+full_symbol = "🔋"
 charging_symbol = "⚡"
-discharging_symbol = "▼"
-unknown_symbol = "?"
-empty_symbol = "▁▁▁▁▁"
+discharging_symbol = "💀"
+unknown_symbol = "❓"
+empty_symbol = "🪫"
 
 [[battery.display]]
 threshold = 10
 style = "bold red"
-discharging_symbol = "▁▁▁▁▁"
 
 [[battery.display]]
 threshold = 30
 style = "bold yellow"
-discharging_symbol = "▂▂▂▁▁"
-
-[[battery.display]]
-threshold = 50
-style = "bold yellow"
-discharging_symbol = "▃▃▂▂▁"
-
-[[battery.display]]
-threshold = 70
-style = "bold green"
-discharging_symbol = "▄▄▃▂▁"
 
 [[battery.display]]
 threshold = 100
 style = "bold green"
-discharging_symbol = "█████"
 
 # ============================================================================
-# TIME - Pixel clock
+# TIME - Show current time
 # ============================================================================
 
 [time]
 disabled = false
-format = '[⏰ $time]($style) '
+format = '🕐 [$time]($style) '
 style = "bold white"
-time_format = "%H:%M"
+time_format = "%T"
 utc_time_offset = "local"
 
 # ============================================================================
-# COMMAND DURATION - Timer
+# COMMAND DURATION - How long commands take
 # ============================================================================
 
 [cmd_duration]
 min_time = 500
-format = "took [⏱ $duration]($style) "
+format = "took [$duration](bold yellow) "
 show_milliseconds = false
-style = "bold yellow"
+show_notifications = false
 
 # ============================================================================
-# MEMORY USAGE - Health bar
+# MEMORY USAGE
 # ============================================================================
 
 [memory_usage]
 disabled = false
 threshold = 75
 symbol = "🧠 "
-format = "[$symbol$ram]($style) "
-style = "bold red"
+format = "via $symbol[$ram( | $swap)]($style) "
+style = "bold dimmed white"
 
 # ============================================================================
-# STATUS - Game over / Victory
+# STATUS - Exit code of last command
 # ============================================================================
 
 [status]
 style = "bold red"
-symbol = "✖"
-success_symbol = "✓"
-format = '[\[$symbol $common_meaning\]]($style) '
+symbol = "🔴"
+success_symbol = "🟢"
+format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
 map_symbol = true
 disabled = false
 
 # ============================================================================
-# CUSTOM MODULES - Pixel art decorations
+# CUSTOM MODULES - Add your own!
 # ============================================================================
 
-# Pixel heart (uncomment to show)
-[custom.heart]
-command = "echo '♥'"
+# Example: Show a gaming quote
+[custom.gaming]
+command = "echo '🎮'"
 when = "true"
-format = "[$output](bold red) "
-style = "bold red"
+format = "[$output]($style) "
+style = "bold magenta"
 disabled = true
 
-# Coin counter (example)
-[custom.coins]
-command = "echo '⭐'"
-when = "true"
-format = "[$output](bold yellow) "
-disabled = true
-
-# Level indicator (example)
-[custom.level]
-command = "echo 'LV.99'"
-when = "true"
-format = "[$output](bold cyan) "
+# Example: Show if in a git repo
+[custom.git_scope]
+command = "git rev-parse --show-toplevel 2>/dev/null | xargs basename"
+when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+format = "[\\[](bold cyan)[$output](bold yellow)[\\]](bold cyan) "
+style = "bold yellow"
 disabled = true

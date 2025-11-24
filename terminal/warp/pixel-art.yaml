@@ -1,0 +1,77 @@
+# ============================================================================
+# 🎨 PIXEL ART / 8-BIT RETRO THEME FOR WARP TERMINAL
+# ============================================================================
+# Inspired by: Super Mario, Zelda, Minecraft, classic 8-bit games
+# Color scheme: Retro gaming palette with vibrant colors
+# ============================================================================
+
+# Theme metadata
+name: "Pixel Art Retro"
+author: "HocusDot"
+version: "1.0"
+
+# Main colors
+accent: "#00ff00"                    # Bright green (success/health)
+background: "#0f0f23"                # Deep blue-black (night sky)
+foreground: "#f0f0f0"                # Off-white (text)
+details: "darker"                    # UI details style
+
+# Terminal colors (ANSI)
+terminal_colors:
+  normal:
+    black: "#1a1a2e"                 # Dark blue-gray
+    red: "#ff0055"                   # Hot pink/red (damage)
+    green: "#00ff00"                 # Bright green (health/success)
+    yellow: "#ffff00"                # Pure yellow (coins/warning)
+    blue: "#00aaff"                  # Cyan blue (water/ice)
+    magenta: "#ff00ff"               # Hot magenta (magic)
+    cyan: "#00ffff"                  # Bright cyan (energy)
+    white: "#e0e0e0"                 # Light gray
+  
+  bright:
+    black: "#555555"                 # Medium gray
+    red: "#ff5555"                   # Lighter red
+    green: "#55ff55"                 # Lighter green
+    yellow: "#ffff55"                # Lighter yellow
+    blue: "#5555ff"                  # Lighter blue
+    magenta: "#ff55ff"               # Lighter magenta
+    cyan: "#55ffff"                  # Lighter cyan
+    white: "#ffffff"                 # Pure white
+
+# UI specific colors
+ui:
+  # Command input area
+  input_background: "#1a1a2e"
+  input_foreground: "#f0f0f0"
+  
+  # Suggestions and autocomplete
+  suggestion_background: "#2a2a4e"
+  suggestion_foreground: "#00ffff"
+  
+  # Selection
+  selection_background: "#ff00ff"
+  selection_foreground: "#000000"
+  
+  # Cursor
+  cursor_background: "#00ff00"
+  cursor_foreground: "#000000"
+  
+  # Borders and dividers
+  border: "#00aaff"
+  
+  # Tabs
+  tab_active_background: "#2a2a4e"
+  tab_active_foreground: "#00ff00"
+  tab_inactive_background: "#1a1a2e"
+  tab_inactive_foreground: "#888888"
+
+# Syntax highlighting (for code blocks)
+syntax:
+  keyword: "#ff00ff"                 # Magenta
+  string: "#00ff00"                  # Green
+  number: "#ffff00"                  # Yellow
+  comment: "#555555"                 # Gray
+  function: "#00aaff"                # Blue
+  variable: "#00ffff"                # Cyan
+  type: "#ff5555"                    # Red
+  constant: "#ffff55"                # Light yellow

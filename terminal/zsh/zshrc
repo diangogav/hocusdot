@@ -4,15 +4,24 @@ autoload -Uz promptinit
 promptinit
 # prompt adam1
 
-setopt histignorealldups sharehistory
-
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
+# ============================================================================
+# History Configuration
+# ============================================================================
+HISTSIZE=50000                    # Lines of history in memory
+SAVEHIST=50000                    # Lines of history to save to file
+HISTFILE=~/.zsh_history           # History file location
+
+# History options
+setopt EXTENDED_HISTORY           # Record timestamp of command in HISTFILE
+setopt HIST_EXPIRE_DUPS_FIRST     # Delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt HIST_IGNORE_DUPS           # Ignore duplicated commands history list
+setopt HIST_IGNORE_SPACE          # Ignore commands that start with space
+setopt HIST_VERIFY                # Show command with history expansion before running it
+setopt INC_APPEND_HISTORY         # Add commands to HISTFILE immediately, not on shell exit
+setopt SHARE_HISTORY              # Share command history data between sessions
 
 # Dotfiles directory
 export DOTFILES_PATH="$HOME/.dotfiles"
@@ -21,6 +30,7 @@ export DOTFILES_PATH="$HOME/.dotfiles"
 # export PATH="$PATH:$DOTFILES_PATH/scripts/:"
 export PATH=~/.dotfiles/scripts:${PATH}
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/share/fnm"
 
 # Environment Variables
 # source $DOTFILES_PATH/terminal/private-exports.sh
@@ -34,9 +44,52 @@ eval "$(starship init zsh)"
 # load ZSH completions
 source $DOTFILES_PATH/terminal/zsh/completion.zsh
 
-# ZSH Plugins
-source $DOTFILES_PATH/zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $DOTFILES_PATH/zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# ============================================================================
+# Zinit Plugin Manager
+# ============================================================================
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+# Install zinit if not present
+if [[ ! -d "$ZINIT_HOME" ]]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# ============================================================================
+# Plugins
+# ============================================================================
+
+# Load plugins with turbo mode (lazy loading)
+zinit wait lucid for \
+  atinit"zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+    zsh-users/zsh-completions
+
+# History substring search (bind after loading)
+zinit ice wait lucid atload'bindkey "^[[A" history-substring-search-up; bindkey "^[[B" history-substring-search-down'
+zinit light zsh-users/zsh-history-substring-search
+
+# You-should-use (reminds you of aliases)
+zinit ice wait lucid
+zinit light MichaelAquilina/zsh-you-should-use
+
+# ============================================================================
+# Modern Tools Integration
+# ============================================================================
+
+# FNM (Fast Node Manager) - Lazy loaded
+[ -f $DOTFILES_PATH/terminal/nodejs/fnm.zsh ] && source $DOTFILES_PATH/terminal/nodejs/fnm.zsh
+
+# Zoxide (smart cd replacement)
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
 
 # ZSH Configurations
 set -o noclobber #ensure that shell redirection will not overwrite existing files
