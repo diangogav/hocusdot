@@ -97,9 +97,9 @@ killport() {
 }
 
 # Quick backup of a file
-backup() {
+bak() {
   if [[ -z "$1" ]]; then
-    echo "Usage: backup <file>"
+    echo "Usage: bak <file>"
     return 1
   fi
   
