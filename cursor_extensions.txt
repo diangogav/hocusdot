@@ -1,0 +1,4 @@
+[90m[main 2025-11-24T23:00:30.270Z][0m updateURL https://api2.cursor.sh/updates/api/update/linux-x64/cursor/2.0.34/0792b4a419e4b25a4c25b8fcdc177c637b5a9f50b8000e1de989a817c9ad2669/stable
+[90m[main 2025-11-24T23:00:30.271Z][0m update#setState idle
+[90m[main 2025-11-24T23:00:41.409Z][0m Extension host with pid 787793 exited with code: 0, signal: unknown.
+[90m[main 2025-11-24T23:00:45.570Z][0m Extension host with pid 787926 exited with code: 0, signal: unknown.
