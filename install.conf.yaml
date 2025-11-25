@@ -18,10 +18,8 @@
     ~/.zshrc: terminal/zsh/zshrc
     ~/.zshenv: terminal/zsh/zshenv
     
-    # Git
-    ~/.gitconfig: git/gitconfig
-    
     # Starship
+
     ~/.config/starship.toml: terminal/starship/starship.toml
     
     # VS Code
