@@ -1,0 +1,26 @@
+# Example .envrc file
+# Place this file in your project directory and run: direnv allow
+
+# Load environment variables from .env file
+# dotenv
+
+# Set project-specific environment variables
+export PROJECT_NAME="my-project"
+export DEBUG=true
+export API_URL="http://localhost:3000"
+
+# Add project bin to PATH
+PATH_add ./bin
+PATH_add ./node_modules/.bin
+
+# Load specific Node.js version (if using fnm)
+# use node 20
+
+# Python virtual environment
+# layout python python3.11
+
+# Example: Database connection
+# export DATABASE_URL="postgresql://localhost/mydb"
+
+# Example: API keys (NEVER commit actual keys!)
+# export API_KEY="your-api-key-here"

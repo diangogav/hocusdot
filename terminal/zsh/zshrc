@@ -30,9 +30,14 @@ export DOTFILES_PATH="$HOME/.dotfiles"
 # export PATH="$PATH:$DOTFILES_PATH/scripts/:"
 export PATH=~/.dotfiles/scripts:${PATH}
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/share/fnm"
+export PATH=\"$PATH:$HOME/.local/share/fnm\"
+
+# Bat as manpager (colored man pages)
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 # Environment Variables
+
 # source $DOTFILES_PATH/terminal/private-exports.sh
 
 # Load aliases file
@@ -79,6 +84,17 @@ zinit light zsh-users/zsh-history-substring-search
 zinit ice wait lucid
 zinit light MichaelAquilina/zsh-you-should-use
 
+# FZF-Tab (visual completion with fzf)
+zinit ice wait lucid
+zinit light Aloxaf/fzf-tab
+
+# FZF-Tab configuration
+zstyle ':fzf-tab:*' fzf-command fzf
+zstyle ':fzf-tab:*' fzf-flags --height=50% --border --preview-window=right:50%
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -1 --color=always $realpath 2>/dev/null || ls -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 $realpath 2>/dev/null || cat $realpath 2>/dev/null'
+
+
 # ============================================================================
 # Modern Tools Integration
 # ============================================================================
@@ -89,6 +105,14 @@ zinit light MichaelAquilina/zsh-you-should-use
 # Zoxide (smart cd replacement)
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
+fi
+
+# Ollama AI (local AI assistant)
+[ -f $DOTFILES_PATH/terminal/ai/ollama.zsh ] && source $DOTFILES_PATH/terminal/ai/ollama.zsh
+
+# Direnv (automatic environment variables)
+if command -v direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
 fi
 
 # ZSH Configurations
@@ -105,72 +129,9 @@ _reverse_search() {
 zle -N _reverse_search
 bindkey '^r' _reverse_search
 
-###-begin-npm-completion-###
-#
-# npm command completion script
-#
-# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
-# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
-#
+# NPM completion (lazy loaded)
+[ -f $DOTFILES_PATH/terminal/nodejs/npm-completion.zsh ] && source $DOTFILES_PATH/terminal/nodejs/npm-completion.zsh
 
-if type complete &>/dev/null; then
-  _npm_completion () {
-    local words cword
-    
-    if type _get_comp_words_by_ref &>/dev/null; then
-      _get_comp_words_by_ref -n = -n @ -n : -w words -i cword
-    else
-      cword="$COMP_CWORD"
-      words=("${COMP_WORDS[@]}")
-    fi
-
-    local si="$IFS"
-    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
-                           COMP_LINE="$COMP_LINE" \
-                           COMP_POINT="$COMP_POINT" \
-                           npm completion -- "${words[@]}" \
-                           2>/dev/null)) || return $?
-    IFS="$si"
-    if type __ltrim_colon_completions &>/dev/null; then
-      __ltrim_colon_completions "${words[cword]}"
-    fi
-  }
-  complete -o default -F _npm_completion npm
-elif type compdef &>/dev/null; then
-  _npm_completion() {
-    local si=$IFS
-      # if your npm command includes `install`
-        if [[ ${words} =~ 'test' ]]; then
-            _dirs
-        else
-            compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                COMP_LINE=$BUFFER \
-                COMP_POINT=0 \
-                npm completion -- "${words[@]}" \
-                2>/dev/null)
-        fi
-    IFS=$si
-  }
-  compdef _npm_completion npm
-elif type compctl &>/dev/null; then
-  _npm_completion () {
-    local cword line point words si
-    read -Ac words
-    read -cn cword
-    let cword-=1
-    read -l line
-    read -ln point
-    si="$IFS"
-    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-                       COMP_LINE="$line" \
-                       COMP_POINT="$point" \
-                       npm completion -- "${words[@]}" \
-                       2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  compctl -K _npm_completion npm
-fi
-###-end-npm-completion-###
 
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
