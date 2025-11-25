@@ -8,19 +8,60 @@ for cmd in fzf bat lsd; do
   fi
 done
 
+# Function to get script description from first comment
+get_description() {
+  local file="$1"
+  if [[ -f "$file" && -x "$file" ]]; then
+    # Get first comment line (after shebang)
+    grep -m 1 "^#[^!]" "$file" 2>/dev/null | sed 's/^# *//' || echo ""
+  fi
+}
+
 # Function to browse directories
 browse() {
   local dir="$1"
-  find "$dir" -mindepth 1 -maxdepth 1 | fzf \
-    --prompt="📂 Select script > " \
-    --preview='if [ -d {} ]; then lsd --tree --classify {}; else bat --color=always --style=numbers {}; fi' \
+  local breadcrumb="${dir#${DOTFILES_PATH:-$HOME/.dotfiles}/scripts}"
+  breadcrumb="${breadcrumb:-/}"
+  
+  # Find items and sort: directories first, then files
+  find "$dir" -mindepth 1 -maxdepth 1 | sort -t/ -k1 | \
+  awk -v dir="$dir" '
+    BEGIN { dirs=""; files="" }
+    {
+      if (system("test -d \"" $0 "\"") == 0) {
+        dirs = dirs $0 "\n"
+      } else {
+        files = files $0 "\n"
+      }
+    }
+    END { printf "%s%s", dirs, files }
+  ' | grep -v "^$" | \
+  fzf \
+    --prompt="📂 $breadcrumb > " \
+    --header="Navigate: Enter to select | Esc to cancel | Ctrl-C to exit" \
+    --preview='
+      if [ -d {} ]; then
+        echo "📁 Directory: $(basename {})"
+        echo ""
+        lsd --tree --depth 2 --classify {}
+      else
+        echo "📜 Script: $(basename {})"
+        desc=$(grep -m 1 "^#[^!]" {} 2>/dev/null | sed "s/^# *//")
+        [[ -n "$desc" ]] && echo "ℹ️  $desc"
+        echo ""
+        bat --color=always --style=numbers --line-range=:30 {}
+      fi
+    ' \
     --preview-window=right:60% \
-    --height=80% \
-    --layout=reverse
+    --height=90% \
+    --layout=reverse \
+    --border=rounded \
+    --color="header:italic:cyan,prompt:bold:blue"
 }
 
 # Main loop
-current_path="${DOTFILES_PATH:-$HOME/.dotfiles}/scripts"
+SCRIPTS_DIR="${DOTFILES_PATH:-$HOME/.dotfiles}/scripts"
+current_path="$SCRIPTS_DIR"
 selected=$(browse "$current_path")
 
 while [[ -d "$selected" ]]; do
@@ -29,6 +70,12 @@ while [[ -d "$selected" ]]; do
 done
 
 if [[ -n "$selected" && -f "$selected" ]]; then
+  echo ""
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
   echo "🚀 Running: $(basename "$selected")"
+  desc=$(get_description "$selected")
+  [[ -n "$desc" ]] && echo "ℹ️  $desc"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo ""
   "$selected" "$@"
 fi
