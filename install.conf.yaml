@@ -1,0 +1,124 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- create:
+    - ~/code
+    - ~/.config
+    - ~/.config/Code/User
+    - ~/.config/Cursor/User
+    - ~/.local/bin
+    - ~/.local/share/warp-terminal/themes
+
+- link:
+    # Zsh
+    ~/.zshrc: terminal/zsh/zshrc
+    ~/.zshenv: terminal/zsh/zshenv
+    
+    # Git
+    ~/.gitconfig: git/gitconfig
+    
+    # Starship
+    ~/.config/starship.toml: terminal/starship/starship.toml
+    
+    # VS Code
+    ~/.config/Code/User/settings.json: vscode/settings.json
+    ~/.config/Code/User/snippets: vscode/snippets
+    ~/.config/Code/User/keybindings.json: vscode/keybindings.json
+    
+    # Cursor (shared config with VS Code)
+    ~/.config/Cursor/User/settings.json: vscode/settings.json
+    ~/.config/Cursor/User/snippets: vscode/snippets
+    ~/.config/Cursor/User/keybindings.json: vscode/keybindings.json
+    
+    # Warp
+    ~/.local/share/warp-terminal/themes/pixel-art.yaml: terminal/warp/pixel-art.yaml
+
+- shell:
+    - description: Install modern CLI tools
+      command: |
+        echo "🔧 Installing modern tools..."
+        
+        # Install Ollama if not present
+        if ! command -v ollama &> /dev/null; then
+          echo "📦 Installing Ollama..."
+          curl -fsSL https://ollama.com/install.sh | sh
+        else
+          echo "✓ Ollama already installed"
+        fi
+        
+        # Install direnv if not present
+        if ! command -v direnv &> /dev/null; then
+          echo "📦 Installing direnv..."
+          sudo apt install -y direnv
+        else
+          echo "✓ direnv already installed"
+        fi
+        
+        # Install fnm if not present
+        if ! command -v fnm &> /dev/null; then
+          echo "📦 Installing fnm..."
+          curl -fsSL https://fnm.vercel.app/install | bash
+        else
+          echo "✓ fnm already installed"
+        fi
+        
+        # Install zoxide if not present
+        if ! command -v zoxide &> /dev/null; then
+          echo "📦 Installing zoxide..."
+          curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+        else
+          echo "✓ zoxide already installed"
+        fi
+        
+        # Install starship if not present
+        if ! command -v starship &> /dev/null; then
+          echo "📦 Installing starship..."
+          curl -sS https://starship.rs/install.sh | sh -s -- -y
+        else
+          echo "✓ starship already installed"
+        fi
+        
+        # Install bat if not present
+        if ! command -v bat &> /dev/null; then
+          echo "📦 Installing bat..."
+          sudo apt install -y bat
+          # Create symlink if bat is installed as batcat
+          if command -v batcat &> /dev/null && ! command -v bat &> /dev/null; then
+            mkdir -p ~/.local/bin
+            ln -sf $(which batcat) ~/.local/bin/bat
+          fi
+        else
+          echo "✓ bat already installed"
+        fi
+        
+        # Install lsd if not present
+        if ! command -v lsd &> /dev/null; then
+          echo "📦 Installing lsd..."
+          sudo apt install -y lsd
+        else
+          echo "✓ lsd already installed"
+        fi
+        
+        # Install fzf if not present
+        if ! command -v fzf &> /dev/null; then
+          echo "📦 Installing fzf..."
+          sudo apt install -y fzf
+        else
+          echo "✓ fzf already installed"
+        fi
+        
+        # Install git-delta if not present
+        if ! command -v delta &> /dev/null; then
+          echo "📦 Installing git-delta..."
+          bash scripts/install-git-tools.sh
+        else
+          echo "✓ git-delta already installed"
+        fi
+        
+        echo "✨ All tools installed!"
+      stdout: true
+      stderr: true
