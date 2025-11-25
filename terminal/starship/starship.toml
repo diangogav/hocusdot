@@ -18,7 +18,9 @@ format = """
 [▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄](bold blue)\
 [█](bold blue)$username$hostname$directory$git_branch$git_status[█](bold blue)
 [█](bold blue)$nodejs$python$rust$golang$docker_context$kubernetes[█](bold blue)
+[█](bold blue)$custom.nodejs_version$custom.ollama$custom.scripts[█](bold blue)
 [▀▀▀](bold blue)$character"""
+
 
 # Alternative compact format (uncomment to use)
 # format = \"\"\"
@@ -221,10 +223,34 @@ discharging_symbol = "█████"
 
 [time]
 disabled = false
-format = '[⏰ $time]($style) '
-style = "bold white"
+format = "[$time](bold white)"
 time_format = "%H:%M"
-utc_time_offset = "local"
+style = "bold white"
+
+# ============================================================================
+# CUSTOM MODULES - System Info
+# ============================================================================
+
+# Node.js version (via fnm)
+[custom.nodejs_version]
+command = "node --version 2>/dev/null | sed 's/v//'"
+when = "command -v node"
+format = "[⬢ $output](bold green)"
+description = "Current Node.js version"
+
+# Ollama status
+[custom.ollama]
+command = "pgrep -x ollama >/dev/null && echo '🤖 ON' || echo ''"
+when = "command -v ollama"
+format = "[$output](bold cyan)"
+description = "Ollama AI status"
+
+# Scripts count
+[custom.scripts]
+command = "find ~/.dotfiles/scripts -type f -executable 2>/dev/null | wc -l"
+when = "test -d ~/.dotfiles/scripts"
+format = "[📜 $output](bold yellow)"
+description = "Available scripts count"
 
 # ============================================================================
 # COMMAND DURATION - Timer
