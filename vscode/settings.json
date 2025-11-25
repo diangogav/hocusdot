@@ -1,27 +1,21 @@
 {
-  "workbench.colorCustomizations": {
-    // "editor.background": "#282D3F",
-    // "editorGroupHeader.tabsBackground": "#282D3F",
-    // "sideBar.background": "#282D3F",
-    // "editorGroupHeader.tabs": "#282D3F",
-    // "editorGutter.background": "#282D3F"
-  },
+  "workbench.colorCustomizations": {},
   "editor.minimap.enabled": false,
   "workbench.editor.showTabs": "multiple",
   "editor.fontSize": 16,
-  "editor.formatOnPase": false,
+  "editor.formatOnPaste": false,
   "editor.suggestSelection": "first",
   "editor.rulers": [
     100
   ],
   "editor.tabSize": 2,
   "editor.wordWrap": "off",
-  "editor.fontFamily": "Monaspace Radon, Bold Italic",
+  "editor.fontFamily": "Operator Mono Lig",
   "editor.fontLigatures": "'calt', 'liga', 'dlig', 'ss01', 'ss02'",
   "search.useGlobalIgnoreFiles": true,
   "search.useIgnoreFiles": true,
-  "workbench.iconTheme": "sweet-vscode-icons",
-  "workbench.colorTheme": "August - Material Palenight",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Cursor Dark Midnight",
   "focus.opacity": "0.7",
   "focus.highlightRange": "block",
   "editor.lineHeight": 40,
@@ -32,7 +26,6 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "workbench.statusBar.visible": false,
   "editor.cursorSmoothCareAnimation": "on",
   "editor.smoothScrolling": true,
   "workbench.list.smoothScrolling": true,
@@ -46,16 +39,44 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "[typescript]": {
-    "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": [
-      "source.fixAll.eslint"
-    ],
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
+  "prettier.singleQuote": true,
+  "window.commandCenter": true,
+  "workbench.productIconTheme": "fluent-icons",
+  "explorer.confirmDelete": false,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": false,
+    "markdown": true
+  },
+  "github.copilot.advanced": {
+    "secret_key": "auto",
+    "length": 500
+  },
+  "editor.inlineSuggest.enabled": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
   "editor.formatOnSave": true,
-  "prettier.singleQuote": true
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "cursor.cpp.disabledLanguages": [
+    "plaintext"
+  ],
+  // VS Code Specific Settings (Merged)
+  "workbench.statusBar.visible": false,
+  "[typescript]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": [
+      "source.fixAll.eslint"
+    ]
+  },
+  // Alternative Themes (VS Code defaults)
+  // "workbench.colorTheme": "August - Material Palenight",
+  // "workbench.iconTheme": "sweet-vscode-icons",
+  // "editor.fontFamily": "Monaspace Radon, Bold Italic"
 }

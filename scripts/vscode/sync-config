@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# ============================================================================
+# Sync VS Code & Cursor Configuration
+# ============================================================================
+
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+VSCODE_CONFIG_DIR="$HOME/.config/Code/User"
+CURSOR_CONFIG_DIR="$HOME/.config/Cursor/User"
+DOTFILES_VSCODE="$DOTFILES_PATH/vscode"
+
+# Function to link file
+link_file() {
+  local src="$1"
+  local dest="$2"
+  
+  if [ -e "$dest" ]; then
+    if [ -L "$dest" ]; then
+      # It's already a symlink, check where it points
+      local current_target=$(readlink -f "$dest")
+      local desired_target=$(readlink -f "$src")
+      
+      if [ "$current_target" == "$desired_target" ]; then
+        echo -e "${GREEN}✓ $dest is already linked correctly${NC}"
+        return
+      fi
+    fi
+    
+    # Backup existing file
+    echo -e "${BLUE}ℹ Backing up existing $dest to $dest.backup${NC}"
+    mv "$dest" "$dest.backup"
+  fi
+  
+  # Create symlink
+  ln -sf "$src" "$dest"
+  echo -e "${GREEN}✓ Linked $src -> $dest${NC}"
+}
+
+echo -e "${BLUE}🔄 Syncing VS Code Configuration...${NC}"
+mkdir -p "$VSCODE_CONFIG_DIR"
+link_file "$DOTFILES_VSCODE/settings.json" "$VSCODE_CONFIG_DIR/settings.json"
+link_file "$DOTFILES_VSCODE/keybindings.json" "$VSCODE_CONFIG_DIR/keybindings.json"
+link_file "$DOTFILES_VSCODE/snippets" "$VSCODE_CONFIG_DIR/snippets"
+
+echo -e "\n${BLUE}🔄 Syncing Cursor Configuration...${NC}"
+mkdir -p "$CURSOR_CONFIG_DIR"
+link_file "$DOTFILES_VSCODE/settings.json" "$CURSOR_CONFIG_DIR/settings.json"
+link_file "$DOTFILES_VSCODE/keybindings.json" "$CURSOR_CONFIG_DIR/keybindings.json"
+# Cursor snippets might be in a different place or same structure, assuming same for now
+link_file "$DOTFILES_VSCODE/snippets" "$CURSOR_CONFIG_DIR/snippets"
+
+echo -e "\n${GREEN}✨ Configuration synced!${NC}"

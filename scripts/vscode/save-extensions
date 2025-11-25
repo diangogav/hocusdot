@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# ============================================================================
+# Save VS Code & Cursor Extensions
+# ============================================================================
+
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+EXTENSIONS_FILE="$DOTFILES_PATH/vscode/extensions.txt"
+TEMP_FILE="/tmp/vscode_extensions_merged.txt"
+
+echo -e "${BLUE}🔄 Reading installed extensions...${NC}"
+
+# Get VS Code extensions
+if command -v code &> /dev/null; then
+    echo "Reading VS Code extensions..."
+    code --list-extensions >> "$TEMP_FILE"
+fi
+
+# Get Cursor extensions
+if command -v cursor &> /dev/null; then
+    echo "Reading Cursor extensions..."
+    cursor --list-extensions >> "$TEMP_FILE"
+fi
+
+if [ ! -f "$TEMP_FILE" ]; then
+    echo "❌ No extensions found or editors not installed."
+    exit 1
+fi
+
+# Sort and remove duplicates
+echo -e "${BLUE}💾 Saving to $EXTENSIONS_FILE...${NC}"
+sort -u "$TEMP_FILE" > "$EXTENSIONS_FILE"
+rm "$TEMP_FILE"
+
+COUNT=$(wc -l < "$EXTENSIONS_FILE")
+echo -e "${GREEN}✓ Saved $COUNT unique extensions to list!${NC}"
+echo -e "Now run 'scripts/vscode/install-extensions' to sync them to both editors."

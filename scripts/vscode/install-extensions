@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+# ============================================================================
+# Install VS Code & Cursor Extensions
+# ============================================================================
+
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+EXTENSIONS_FILE="$DOTFILES_PATH/vscode/extensions.txt"
+
+if [ ! -f "$EXTENSIONS_FILE" ]; then
+  echo "❌ Extensions file not found: $EXTENSIONS_FILE"
+  exit 1
+fi
+
+install_extensions() {
+  local cmd="$1"
+  local name="$2"
+  
+  if ! command -v $cmd &> /dev/null; then
+    echo "⚠️  $name is not installed. Skipping."
+    return
+  fi
+  
+  echo -e "${BLUE}📦 Installing extensions for $name...${NC}"
+  
+  local install_args=()
+  
+  while read -r extension; do
+    if [[ -z "$extension" || "$extension" == \#* ]]; then
+      continue
+    fi
+    
+    install_args+=("--install-extension" "$extension")
+  done < "$EXTENSIONS_FILE"
+  
+  if [ ${#install_args[@]} -gt 0 ]; then
+    echo "Installing ${#install_args[@]} arguments (approx $((${#install_args[@]}/2)) extensions)..."
+    $cmd "${install_args[@]}" --force
+  else
+    echo "No extensions to install found in list."
+  fi
+  
+  echo -e "${GREEN}✓ $name extensions installed!${NC}\n"
+}
+
+# Install for VS Code
+install_extensions "code" "VS Code"
+
+# Install for Cursor
+# Check if 'cursor' command exists, otherwise try to find it or skip
+if command -v cursor &> /dev/null; then
+  install_extensions "cursor" "Cursor"
+else
+  echo "⚠️  Cursor CLI not found. If you use Cursor, make sure 'cursor' is in your PATH."
+  # Attempt to find cursor in common locations if needed, but for now just warn.
+fi
