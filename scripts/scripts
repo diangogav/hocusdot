@@ -20,7 +20,7 @@ browse() {
 }
 
 # Main loop
-current_path="$DOTFILES_PATH/scripts"
+current_path="${DOTFILES_PATH:-$HOME/.dotfiles}/scripts"
 selected=$(browse "$current_path")
 
 while [[ -d "$selected" ]]; do

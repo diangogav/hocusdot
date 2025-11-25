@@ -26,11 +26,9 @@ setopt SHARE_HISTORY              # Share command history data between sessions
 # Dotfiles directory
 export DOTFILES_PATH="$HOME/.dotfiles"
 
-# Add scripts folder
-# export PATH="$PATH:$DOTFILES_PATH/scripts/:"
-export PATH=~/.dotfiles/scripts:${PATH}
-export PATH="$PATH:$HOME/.local/bin"
-export PATH=\"$PATH:$HOME/.local/share/fnm\"
+# Add scripts folder and local bin to PATH
+export PATH="$HOME/.dotfiles/scripts:$HOME/.local/bin:$HOME/.local/share/fnm:$PATH"
+
 
 # Bat as manpager (colored man pages)
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
