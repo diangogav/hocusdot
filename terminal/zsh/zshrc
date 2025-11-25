@@ -82,17 +82,15 @@ zinit light zsh-users/zsh-history-substring-search
 zinit ice wait lucid
 zinit light MichaelAquilina/zsh-you-should-use
 
-# FZF-Tab (visual completion with fzf)
-zinit ice wait lucid
-zinit light Aloxaf/fzf-tab
+# FZF-Tab (visual completion with fzf) - DISABLED for performance
+# zinit ice wait lucid
+# zinit light Aloxaf/fzf-tab
 
-# FZF-Tab configuration
-zstyle ':fzf-tab:*' fzf-command fzf
-zstyle ':fzf-tab:*' fzf-flags --height=40% --border
-# Disable preview for cd (faster)
-zstyle ':fzf-tab:complete:cd:*' fzf-preview ''
-# Keep preview for other commands (files, etc)
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers --line-range=:50 $realpath 2>/dev/null'
+# FZF-Tab configuration - DISABLED
+# zstyle ':fzf-tab:*' fzf-command fzf
+# zstyle ':fzf-tab:*' fzf-flags --height=40% --border
+# zstyle ':fzf-tab:complete:cd:*' fzf-preview ''
+# zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers --line-range=:50 $realpath 2>/dev/null'
 
 
 # ============================================================================
