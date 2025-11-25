@@ -1,16 +1,79 @@
+# ============================================================================
+# Navigation & Directory
+# ============================================================================
 alias tocode='cd ~/code'
 alias dotfiles='cd ~/.dotfiles'
-alias reload='source ~/.zshrc'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# ============================================================================
+# File Listing (lsd)
+# ============================================================================
 alias ll='lsd -lh --group-dirs=first'
 alias la='lsd -a --group-dirs=first'
 alias l='lsd --group-dirs=first'
 alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
-alias gs='git status'
-alias ..='cd ..'
-alias ...='cd ...'
-alias cat=bat
-alias dnm='find . -name node_modules -prune -exec rm -rf {} \;'
-alias spellbook='scripts'
+alias lt='lsd --tree --depth 2'
+alias lta='lsd --tree'
 
-# Note: zoxide commands (z, zi) are created automatically by 'zoxide init zsh'
+# ============================================================================
+# File Viewing
+# ============================================================================
+alias cat='bat'
+alias less='bat --paging=always'
+
+# ============================================================================
+# Git Aliases
+# ============================================================================
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git pull'
+alias gd='git diff'
+alias gco='git checkout'
+alias gb='git branch'
+alias glog='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+alias gst='git-status-visual'  # Custom function
+
+# ============================================================================
+# Docker Aliases
+# ============================================================================
+alias d='docker'
+alias dc='docker-compose'
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dimg='docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"'
+alias dclean='docker system prune -af'
+alias dstop='docker stop $(docker ps -q)'
+
+# ============================================================================
+# System & Network
+# ============================================================================
+alias reload='source ~/.zshrc'
+alias ports='netstat -tulanp 2>/dev/null | grep LISTEN'
+alias myip='curl -s ifconfig.me'
+alias localip='ip addr show | grep "inet " | grep -v 127.0.0.1'
+alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
+
+# ============================================================================
+# Development
+# ============================================================================
+alias dnm='find . -name node_modules -prune -exec rm -rf {} \;'
+alias serve='python3 -m http.server'
+alias json='python3 -m json.tool'
+
+# ============================================================================
+# Dotfiles & Scripts
+# ============================================================================
+alias spellbook='scripts'
+alias health='health-check'
+alias update-all='update-system'
+alias backup='backup-dotfiles'
+
+# ============================================================================
+# Zoxide (created automatically by 'zoxide init zsh')
+# ============================================================================
+# z, zi - created by zoxide
+alias zz='zoxide-preview'  # Custom function

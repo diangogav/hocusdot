@@ -47,6 +47,9 @@ eval "$(starship init zsh)"
 # load ZSH completions
 source $DOTFILES_PATH/terminal/zsh/completion.zsh
 
+# Load useful functions
+source $DOTFILES_PATH/terminal/zsh/functions.zsh
+
 # ============================================================================
 # Zinit Plugin Manager
 # ============================================================================
